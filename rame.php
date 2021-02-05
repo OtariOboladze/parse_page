@@ -14,19 +14,11 @@ if(!empty($dom)) {
         foreach($divClass->find('ul li h2') as $title ) {
             $answer[$i]['title'] = $title->plaintext;
         }
-    //ipl-ratings-bar
-    // foreach($divClass->find(“.ipl-ratings-bar”) as $ipl_ratings_bar ) {
-    //     $answer[$i][‘rate’] = trim($ipl_ratings_bar->plaintext);
-    // }
-    //content
-    // foreach($divClass->find(‘div[class=text show-more__control]’) as $desc) {
-    //     $text = html_entity_decode($desc->plaintext);
-    //     $text = preg_replace(‘/\&#39;/’, “‘”, $text);
-    //     $answer[$i][‘content’] = html_entity_decode($text);
-    // }
+        foreach($divClass->find('ul li 1 .href') as $link ) {
+            $answer[$i]['link'] = trim($link->plaintext);
+        }
     $i++;
     }
 }
 print_r($answer);
 
-// exit;
