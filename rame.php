@@ -9,16 +9,20 @@ $answer = array();
 if(!empty($dom)) {
     $divClass = $title = '';
     $i = 0;
-    foreach($dom->find('#listado-grupo') as $divClass) {
+    foreach($dom->find('#listado-grupo ul li a') as $divClass) {
         //title
-        foreach($divClass->find('ul li h2') as $title ) {
+        foreach($divClass->find('h2') as $title ) {
             $answer[$i]['title'] = $title->plaintext;
         }
-        foreach($divClass->find('ul li 1 .href') as $link ) {
-            $answer[$i]['link'] = trim($link->plaintext);
+        foreach($divClass as $link ) {
+            $answer[$i]['link'] = $link;
         }
     $i++;
     }
 }
+
+echo "<pre>";
 print_r($answer);
+echo "</pre>";
+
 
